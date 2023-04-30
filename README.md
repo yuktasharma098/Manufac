@@ -15,7 +15,9 @@ In the project directory, you can run:
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
+After the application start, two charts render as shown in the screenshort below
 
+<img width="1470" alt="Screenshot 2023-04-30 at 9 56 46 PM" src="https://user-images.githubusercontent.com/132205490/235364838-bd06e1d1-37e7-493f-a206-6f4a34799416.png">
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
