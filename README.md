@@ -17,9 +17,8 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 After the application start, two charts render as shown in the screenshort below
 
-<img width="1470" alt="Screenshot 2023-04-30 at 9 56 46 PM" src="https://user-images.githubusercontent.com/132205490/235364838-bd06e1d1-37e7-493f-a206-6f4a34799416.png">
-
-<img width="1470" alt="Screenshot 2023-04-30 at 9 57 08 PM" src="https://user-images.githubusercontent.com/132205490/235365205-983542f4-89ec-497a-952f-0d727bb0dc59.png">
+<img width="1411" alt="Screenshot 2023-04-30 at 10 13 36 PM" src="https://user-images.githubusercontent.com/132205490/235365348-c19aa83a-75e2-48d7-a9d2-8973f542711c.png">
+<img width="1434" alt="Screenshot 2023-04-30 at 10 14 05 PM" src="https://user-images.githubusercontent.com/132205490/235365355-64a23ca2-610b-4ffc-bace-6feeb0ec84e8.png">
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
