@@ -3,63 +3,19 @@ import data from '../Wine-Data.json'
 import * as echarts from 'echarts';
 
 const BarChart = () => {
-  let array = []
-  let arr = []
-  let arr1 = []
-  let arr2 = []
-  let minValuearr
-  let minValuearr1
-  let minValuearr2
-  let finalArray = []
-
-
-  for (var i = 0; i < data.length; i++) {
-    array.push(data[i].Alcohol)
-  }
-  const uniqueAlcoholArray = array.filter((value, index) => {
-    return array.indexOf(value) === index;
-  });
-
-  for (var i = 0; i < data.length; i++) {
-    if (data[i].Alcohol === uniqueAlcoholArray[0]) {
-      arr.push(data[i].Magnesium)
-      minValuearr = Math.min(...arr);
-      let obj = {
-        "Alcohol": uniqueAlcoholArray[0],
-        "Magnesium": minValuearr
-
-      }
-      finalArray.push(obj)
-
+  const groupedData = data.reduce((acc, obj) => {
+    const key = obj.Alcohol;
+    if (!acc[key]) {
+      acc[key] = [];
     }
-    else if (data[i].Alcohol === uniqueAlcoholArray[1]) {
-      arr1.push(data[i].Magnesium)
-      minValuearr1 = Math.min(...arr1);
-      let obj1 = {
-        "Alcohol": uniqueAlcoholArray[1],
-        "Magnesium": minValuearr1
-
-      }
-      finalArray.push(obj1)
-
-    }
-    else if (data[i].Alcohol === uniqueAlcoholArray[2]) {
-      arr2.push(data[i].Magnesium)
-      minValuearr2 = Math.min(...arr2);
-      let obj2 = {
-        "Alcohol": uniqueAlcoholArray[2],
-        "Magnesium": minValuearr2
-
-      }
-      finalArray.push(obj2)
-
-    }
-
-
-
-  }
-  const uniqueArray = finalArray.filter((obj, index, self) => {
-    return index === self.findIndex(o => o.Alcohol === obj.Alcohol);
+    acc[key].push(obj);
+    return acc;
+  }, {});
+  //  minimum magnesium value for each group
+  const result = Object.values(groupedData).map(group => {
+    const minMagnesium = Math.min(...group.map(obj => obj.Magnesium));
+    const filteredObj = group.find(obj => obj.Magnesium === minMagnesium);
+    return {Alcohol: filteredObj.Alcohol, Magnesium: filteredObj.Magnesium};
   });
 
   //useEffect is used so as to add the data to the chart directly as the component render
@@ -69,7 +25,7 @@ const BarChart = () => {
     barChart.setOption({
       xAxis: {
         type: 'category',
-        data: uniqueArray.map((item) => item.Alcohol),
+        data: result.map((item) => item.Alcohol),
         name: 'Alcohol'
       },
       yAxis: {
@@ -78,7 +34,7 @@ const BarChart = () => {
       },
       // type of the series is bar as bar chart is to be made and map render the data of magnesium present is array of object
       series: [{
-        data: uniqueArray.map((item) => item.Magnesium),
+        data: result.map((item) => item.Magnesium),
         type: 'bar'
       }]
     });
